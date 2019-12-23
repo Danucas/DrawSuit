@@ -1,1 +1,19 @@
-{'layer_1': {'image': '/home/dan/python/DrawSuit/icons/btns/gree.png'}, 'layer_2': {'drawable': {'bg': '#ffbbaa', 'ini': {'y': 10, 'x': 10}, 'fin': {'y': 100, 'x': 100}, 'type': 'rect'}}}
+{
+    "layer_01": {
+        "image": "/home/dan/python/DrawSuit/icons/btns/gree.png"
+    },
+    "layer_02": {
+        "drawable": {
+            "bg": "#ffbbaa",
+            "fin": {
+                "x": 100,
+                "y": 100
+            },
+            "ini": {
+                "x": 10,
+                "y": 10
+            },
+            "type": "rect"
+        }
+    }
+}

@@ -2,16 +2,18 @@
 from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
+import json
 import os
 
-def open_file(root, viewport, img):
+def open_file(root, viewport, img, doc):
     print("opening file")
     filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select File", filetypes=(("png files", "*.png"), ("all files", "*.*")))
-    img[0] = ImageTk.PhotoImage(Image.open(filename).resize((480, 480)))
-    viewport.create_image(0, 0, image=img[0], anchor="nw")
-    viewport.place_forget()
-    viewport.place(x=40, y=0)
+    file_n = open(filename,"r")
+    content = json.loads(file_n.read())
+    file_n.close()
     print(filename)
+    print(content)
+    doc[0] = content
 
 def save_file(root, viewport, img):
     print("saving file")
@@ -31,5 +33,6 @@ def save_as(root, viewport, img, doc):
             del doc[0][i]["Canvas"]
         if "snap" in doc[0][i]:
             del doc[0][i]["snap"]
-    file_ac.write("{}".format(doc[0]))
+    file_ac.write(json.dumps(doc[0], indent=4, sort_keys=True))
+    file_ac.close()
     print(filename)

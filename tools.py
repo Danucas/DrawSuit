@@ -77,7 +77,14 @@ def draw_layer_preview(layers, layer, frame):
     if "drawable" in layer:
         print(layer["drawable"])
 
-
+def insert_layer(layers_tool, layers, root):
+    layers_tool.pack_forget()
+    indx = len(layers.items())
+    dic = "layer_{:0>2d}".format(indx + 1)
+    print(dic)
+    layers[dic] = {"bg": "red"}
+    new_layers_tool = set_layer_tools(root, layers)
+    return new_layers_tool
 
 def set_layer_tools(root, layers):
     #Layer tool View
@@ -94,7 +101,7 @@ def set_layer_tools(root, layers):
 
     nl_icon = ImageTk.PhotoImage(Image.open(r"icons/btns/btn.png").resize((16, 16)))
     new_layer_btn = Canvas(lb_canv, width=20, height=20, bg="pink", cursor="hand2")
-    new_layer_btn.bind("<Button-1>", lambda evn: print("New layer"))
+    new_layer_btn.bind("<Button-1>", lambda evn: insert_layer(lytool_cont, layers, root))
     new_layer_btn.place(x=0, y=0)
     new_layer_btn.create_image(2, 2, anchor="nw", image=nl_icon)
 
@@ -113,9 +120,4 @@ def set_layer_tools(root, layers):
     lb_canv.pack(side="bottom", fill="both", expand=True)
     layer_tool.pack(side="left", fill="both", expand=True)
     scroll_bar.pack(side="right", fill="y")
-    return ()
-
-def insert_layer(layers_tool, layers, root):
-    layers_tool.pack_forget()
-    new_layers_tool = set_layer_tools(root, layers)
-    return new_layers_tool
+    return lytool_cont

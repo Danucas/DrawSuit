@@ -19,7 +19,7 @@ def hello():
 #-----------------------------
 #Setting UI
 viewport , dim = set_viewport(root)
-layers = {"layer_1": {"image": "/home/dan/python/DrawSuit/icons/btns/gree.png"}, "layer_2": {"drawable": {"type": "rect", "ini":{"x": 10, "y": 10}, "fin": {"x": 100, "y": 100}, "bg": "#ffbbaa"}}}
+layers = {"layer_01": {"image": "/home/dan/python/DrawSuit/icons/btns/gree.png"}, "layer_02": {"drawable": {"type": "rect", "ini":{"x": 10, "y": 10}, "fin": {"x": 100, "y": 100}, "bg": "#ffbbaa"}}}
 doc = [layers]
 lytool = set_layer_tools(root, layers)
 tools = set_tools(root)
