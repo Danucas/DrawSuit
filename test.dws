@@ -1,0 +1,1 @@
+{'layer_1': {'image': '/home/dan/python/DrawSuit/icons/btns/gree.png'}, 'layer_2': {'drawable': {'bg': '#ffbbaa', 'ini': {'y': 10, 'x': 10}, 'fin': {'y': 100, 'x': 100}, 'type': 'rect'}}}
