@@ -7,13 +7,19 @@ import os
 
 def open_file(root, viewport, img, doc):
     print("opening file")
-    filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select File", filetypes=(("png files", "*.png"), ("all files", "*.*")))
-    file_n = open(filename,"r")
-    content = json.loads(file_n.read())
-    file_n.close()
+    filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select File", filetypes=(("png files", "*.png"), ("dws files", "*.dws"), ("all files", "*.*")))
+    print(filename[-3:])
     print(filename)
-    print(content)
-    doc[0] = content
+    if filename[-3:] == "dws":
+        file_n = open(filename,"r")
+        content = json.loads(file_n.read())
+        file_n.close()
+        print(content)
+        doc[0] = content
+    else:
+        print("Open imagefile")
+        img[0] = ImageTk.PhotoImage(Image.open(filename).resize((480, 480)))
+        viewport.create_image(0, 0, image=img[0], anchor="nw")
 
 def save_file(root, viewport, img):
     print("saving file")
