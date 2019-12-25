@@ -1,9 +1,10 @@
 from tkinter import *
 from PIL import Image, ImageDraw
 from cols import getColors
+from tool_handler import *
 
 
-def set_viewport(root):
+def set_viewport(root, actual_tool):
     #Adding viewport
     #viewport dimensions
     doc_dim = {"width": (root.winfo_screenwidth() - 800), "height": (root.winfo_screenwidth() - 800)}
@@ -24,34 +25,18 @@ def set_viewport(root):
     #viewport cursor event handler
 
     def click(event, ini, sel):
-        print("\033[92m{}, {}\033[0m".format(event.x, event.y))
-        ini[0] = event.x
-        ini[1] = event.y
-        sel[0] = True
-        print(ini)
+        #print("\033[92m{}, {}\033[0m".format(event.x, event.y))
+        tool_selector([draw, image1], event, ini, final, sel, actual_tool, area, viewport, 0)
+        
 
     def motion(event, ini, fin, sel, ar):
-        if sel[0] is True:
-            if ar[0] != None:
-                viewport.delete(ar[0])
-                fin[0] = event.x
-                fin[1] = event.y
-                ar[0] = viewport.create_rectangle(ini[0], ini[1], fin[0], fin[1], outline="#000000", fill="#FFFFFF", dash=(4, 2), stipple="gray12")
+        tool_selector([draw, image1], event, ini, final, sel, actual_tool, area, viewport, 1)
+        
 
 
     def release(event, ini, fin, sel, ar):
-        print("\033[91m{}, {}\033[0m".format(event.x, event.y))
-        print(ini)
-        viewport.delete(ar[0])
-        fin[0] = event.x
-        fin[1] = event.y
-        sel[0] = False
-        ar[0] = viewport.create_rectangle(ini[0], ini[1], fin[0], fin[1], outline="#000000", fill="#FFFFFF", dash=(4, 2), stipple="gray12")
-        print("rectangle object")
-        for fun in viewport.find_withtag(ar[0]):
-            print(viewport.type(fun))
-        draw.rectangle([ini[0], ini[1], fin[0], fin[1]], fill="#000000")
-        image1.save("rect_test.png", 'PNG')
+        #print("\033[91m{}, {}\033[0m".format(event.x, event.y))
+        tool_selector([draw, image1], event, ini, final, sel, actual_tool, area, viewport, 2)
 
 
     # -----------------------------------

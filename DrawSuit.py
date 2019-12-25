@@ -23,11 +23,12 @@ def hello():
 
 #-----------------------------
 #Setting UI
-viewport , dim = set_viewport(root)
+actual_tool = ["rect_selection"]
+viewport , dim = set_viewport(root, actual_tool)
 layers = {"layer_01": {"image": "icons/btns/gree.png"}, "layer_02": {"drawable": {"type": "rect", "ini":{"x": 10, "y": 10}, "fin": {"x": 100, "y": 100}, "bg": "#ffbbaa"}}}
 doc = [layers]
 lytool = set_layer_tools(root, layers)
-tools = set_tools(root)
+tools, actual_tool = set_tools(root, actual_tool)
 tool_bar = set_tool_bar(root)
 menubar = set_menubar(root, viewport, doc)
 

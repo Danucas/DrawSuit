@@ -7,6 +7,7 @@ def getColors():
     colors["grey_cont"] = "#4d5357"
     colors["grey_1"] = "#656a6e"
     colors["empty"] = "#bdbbbb"
+    colors["brush"] = "#000000"
     return colors
 
 def print_colors(root):

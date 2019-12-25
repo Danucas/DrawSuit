@@ -4,64 +4,70 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 import os
 
-def set_tools(root):
+
+def set_actual_tool(actual_tool, tool):
+    print("actual tool {}".format(tool))
+    actual_tool[0] = tool
+    
+
+def set_tools(root, actual_tool):
     #Tool box--------
     tool_box_cont = Frame(root)
     tool_box = Canvas(tool_box_cont, width=30, height=root.winfo_screenheight()-30)
     move_spot = Canvas(tool_box_cont, width=30, height=10, bg="black")
     move_spot.bind("<Button-1>", lambda evn: print("moving tag"))
     move_spot.pack()
-    tool_1 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_1 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_1.bind("<Button-1>", lambda evn: print("tool_1"))
     tool_1.place(x=0, y=0)
-    tool_2 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_2 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_2.bind("<Button-1>", lambda evn: print("tool_2"))
     tool_2.place(x=0, y=30)
 
-    tool_3 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_3 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_3.bind("<Button-1>", lambda evn: print("tool_3"))
     tool_3.place(x=0, y=60)
 
-    tool_4 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_4 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_4.bind("<Button-1>", lambda evn: print("tool_4"))
     tool_4.place(x=0, y=90)
 
-    tool_5 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_5 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_5.bind("<Button-1>", lambda evn: print("tool_5"))
     tool_5.place(x=0, y=120)
-
-    tool_6 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
-    tool_6.bind("<Button-1>", lambda evn: print("tool_6"))
+#   pencil
+    tool_6 = Canvas(tool_box, width=30, height=30, bg="red", cursor="hand2")
+    tool_6.bind("<Button-1>", lambda evn: set_actual_tool(actual_tool, "pencil"))
     tool_6.place(x=0, y=150)
 
-    tool_7 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_7 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_7.bind("<Button-1>", lambda evn: print("tool_7"))
     tool_7.place(x=0, y=180)
 
-    tool_8 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_8 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_8.bind("<Button-1>", lambda evn: print("tool_8"))
     tool_8.place(x=0, y=210)
 
-    tool_9 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_9 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_9.bind("<Button-1>", lambda evn: print("tool_9"))
     tool_9.place(x=0, y=240)
 
-    tool_10 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_10 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_10.bind("<Button-1>", lambda evn: print("tool_10"))
     tool_10.place(x=0, y=270)
 
-    tool_11 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_11 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_11.bind("<Button-1>", lambda evn: print("tool_11"))
     tool_11.place(x=0, y=300)
 
-    tool_12 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand1")
+    tool_12 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_12.bind("<Button-1>", lambda evn: print("tool_12"))
     tool_12.place(x=0, y=330)
 
 
     tool_box.pack()
     tool_box_cont.place(x=0, y=30)
-    return tool_box_cont
+    return tool_box_cont, actual_tool
 
 
 
