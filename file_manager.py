@@ -18,7 +18,7 @@ def open_file(root, viewport, img, doc):
         doc[0] = content
     else:
         print("Open imagefile")
-        img[0] = ImageTk.PhotoImage(Image.open(filename).resize((480, 480)))
+        img[0] = ImageTk.PhotoImage(Image.open(filename).resize((600, 600)))
         viewport.create_image(0, 0, image=img[0], anchor="nw")
 
 def save_file(root, viewport, img):
