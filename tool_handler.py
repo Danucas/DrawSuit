@@ -3,13 +3,19 @@ from pencil import *
 from PIL import Image, ImageDraw
 def tool_selector(draw_img, evn, ini, fin, sel, actual, ar, viewport, state):
     if actual[0] == "pencil":
-        print("drawing")
         if state == 0:
             sel[0] = True
-            pencil_draw(evn, viewport)
+            ini[0] = evn.x
+            ini[1] = evn.y
+            fin[0] = evn.x
+            fin[1] = evn.y
+            pencil_draw(evn, viewport, (None))
         if state == 1 and sel[0] is True:
-            print("drawing")
-            pencil_draw(evn, viewport)
+            ini[0] = fin[0]
+            ini[1] = fin[1]
+            fin[0] = evn.x
+            fin[1] = evn.y
+            pencil_draw(evn, viewport, (ini, fin))
         if state == 2:
             sel[0] = False
     elif actual[0] == "rect_selection":

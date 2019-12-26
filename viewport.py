@@ -26,17 +26,14 @@ def set_viewport(root, actual_tool):
 
     def click(event, ini, sel):
         #print("\033[92m{}, {}\033[0m".format(event.x, event.y))
-        tool_selector([draw, image1], event, ini, final, sel, actual_tool, area, viewport, 0)
-        
+        tool_selector([draw, image1], event, ini, final, sel, actual_tool, area, viewport, 0)        
 
     def motion(event, ini, fin, sel, ar):
-        tool_selector([draw, image1], event, ini, final, sel, actual_tool, area, viewport, 1)
-        
-
+        tool_selector([draw, image1], event, ini, fin, sel, actual_tool, area, viewport, 1)        
 
     def release(event, ini, fin, sel, ar):
         #print("\033[91m{}, {}\033[0m".format(event.x, event.y))
-        tool_selector([draw, image1], event, ini, final, sel, actual_tool, area, viewport, 2)
+        tool_selector([draw, image1], event, ini, fin, sel, actual_tool, area, viewport, 2)
 
 
     # -----------------------------------

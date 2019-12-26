@@ -8,11 +8,11 @@ import os
 def set_actual_tool(actual_tool, tool):
     print("actual tool {}".format(tool))
     actual_tool[0] = tool
-    
 
 def set_tools(root, actual_tool):
     #Tool box--------
     tool_box_cont = Frame(root)
+    tag = ["tag"]
     tool_box = Canvas(tool_box_cont, width=30, height=root.winfo_screenheight()-30)
     move_spot = Canvas(tool_box_cont, width=30, height=10, bg="black")
     move_spot.bind("<Button-1>", lambda evn: print("moving tag"))
@@ -35,9 +35,17 @@ def set_tools(root, actual_tool):
     tool_5 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_5.bind("<Button-1>", lambda evn: print("tool_5"))
     tool_5.place(x=0, y=120)
+    def print_tool_tag(evn, txt, y):
+        tag[0] = Text(root, width=len(txt), height=1)
+        tag[0].insert(END, txt)
+        tag[0].place(x=evn.x, y=y)
+    def remove_tag():
+        tag[0].place_forget()
 #   pencil
     tool_6 = Canvas(tool_box, width=30, height=30, bg="red", cursor="hand2")
     tool_6.bind("<Button-1>", lambda evn: set_actual_tool(actual_tool, "pencil"))
+    tool_6.bind("<Leave>", lambda x: remove_tag())
+    tool_6.bind("<Enter>", lambda evn: print_tool_tag(evn, "Pencil", 140 + 60))
     tool_6.place(x=0, y=150)
 
     tool_7 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
