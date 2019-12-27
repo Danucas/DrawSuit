@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
+from color_picker import *
 import os
 
 
@@ -38,7 +39,8 @@ def set_tools(root, actual_tool):
     def print_tool_tag(evn, txt, y):
         tag[0] = Text(root, width=len(txt), height=1)
         tag[0].insert(END, txt)
-        tag[0].place(x=evn.x, y=y)
+        tag[0].place(x=30, y=y)
+        tag[0].bind("<Enter>", lambda evn: tag[0].place_forget())
     def remove_tag():
         tag[0].place_forget()
 #   pencil
@@ -67,9 +69,11 @@ def set_tools(root, actual_tool):
     tool_11 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
     tool_11.bind("<Button-1>", lambda evn: print("tool_11"))
     tool_11.place(x=0, y=300)
-
-    tool_12 = Canvas(tool_box, width=30, height=30, bg="green", cursor="hand2")
-    tool_12.bind("<Button-1>", lambda evn: print("tool_12"))
+#ColorPicker
+    tool_12 = Canvas(tool_box, width=30, height=30, bg="purple", cursor="hand2")
+    tool_12.bind("<Button-1>", lambda evn: color_picker(root))
+    tool_12.bind("<Enter>", lambda evn: print_tool_tag(evn, "Color picker", 380))
+#    tool_12.bind("<Leave>", lambda evn: remove_tag())
     tool_12.place(x=0, y=330)
 
 
