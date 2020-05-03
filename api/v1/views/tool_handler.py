@@ -1,6 +1,11 @@
 #!/usr/bin/python3
-from pencil import *
+"""
+Manage tool selection logic
+"""
+from models.tools.pencil import *
 from PIL import Image, ImageDraw
+
+
 def tool_selector(draw_img, evn, ini, fin, sel, actual, ar, viewport, state):
     if actual[0] == "pencil":
         if state == 0:

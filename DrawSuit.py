@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 from tkinter import *
-from file_manager import *
-from tools import *
-from tool_bar import *
-from viewport import *
-from menus import *
-from cols import *
+from utilities.file_manager import *
+from api.v1.views.tools import *
+from api.v1.views.tool_bar import *
+from api.v1.views.viewport import *
+from api.v1.views.menus import *
+from utilities.cols import *
 from PIL import Image, ImageTk
 
 root = Tk()
